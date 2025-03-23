@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-
 const Home = () => {
   return (
     <div className="flex h-screen">
