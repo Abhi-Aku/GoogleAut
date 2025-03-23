@@ -1,11 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { auth, provider } from './utils/Firebash';
+import { signInWithPopup } from 'firebase/auth';
 
 const App = () => {
-  return (
-   <>
-   <h1>Hello Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis quae eum unde pariatur dolorum eos voluptatem necessitatibus inventore nemo perspiciatis accusamus, rerum temporibus omnis iusto velit magnam minus! Eum nulla, fuga sit odio vero assumenda architecto animi soluta! Repudiandae deleniti eos voluptatem voluptas, aspernatur repellat unde maxime ducimus recusandae hic! Velit saepe amet similique consectetur vel. Asperiores incidunt hic animi totam vel laboriosam placeat facere! Nobis, eos suscipit culpa minima optio reiciendis reprehenderit numquam commodi laborum porro eum perspiciatis hic soluta molestiae libero nihil accusamus ab vel earum assumenda. Quam amet eos provident fuga magnam, sed vel perferendis esse labore nostrum unde adipisci ipsa, dignissimos ut laudantium. Voluptatem, nihil vitae! Nobis, laboriosam. Tempora doloribus sequi maiores quae, commodi itaque ex reiciendis nulla assumenda ad earum soluta vel dignissimos praesentium cum dicta, possimus quas officiis magnam, quisquam vitae. Totam facere error pariatur culpa ipsum perspiciatis praesentium possimus unde similique excepturi magni laborum, sequi dolor. Eaque facere delectus vel facilis tempora laborum voluptate aperiam corrupti vitae ab iure, at totam consequuntur explicabo repudiandae nobis reprehenderit possimus ex repellendus? Illo magni repudiandae quaerat est itaque autem quis possimus commodi harum nisi officiis consequuntur doloribus, suscipit, atque aut temporibus, ut enim explicabo iusto reprehenderit cum quia delectus? Aut veniam laudantium esse vitae in, odio fugiat enim neque illum obcaecati, saepe quae ratione eligendi nostrum pariatur reiciendis soluta velit eaque unde maiores aliquam quo aperiam impedit! Molestias consequuntur laborum dolore sed quisquam aperiam, culpa temporibus, est exercitationem hic aliquid voluptate. Dolore, magnam accusamus. Velit ea fugit dolorem suscipit eius eveniet ducimus distinctio reiciendis corporis amet, quam, quas inventore similique libero alias mollitia omnis quibusdam obcaecati veritatis et cumque incidunt, recusandae odit. Asperiores nesciunt quidem quos, nam illum sit adipisci aliquam? Eum exercitationem ipsum vel in quibusdam similique, cupiditate labore. Ab libero voluptatibus doloremque, corporis placeat neque veritatis unde natus eveniet doloribus. Quae iste quasi, nihil dolor animi quidem quia! Aut recusandae eligendi consequatur nam labore beatae obcaecati reiciendis, veritatis inventore at nobis voluptates modi animi, reprehenderit maxime hic cum eius accusamus quod illum placeat asperiores. Quis recusandae odit maiores explicabo voluptas a excepturi labore, eos et porro quo corporis molestias at id, commodi praesentium sed eaque saepe incidunt accusantium fugit eligendi doloremque cumque molestiae. Dicta corrupti, sint vel voluptatibus voluptas iste aliquid voluptates excepturi illum? Alias laudantium blanditiis quam architecto consequuntur! Ut minima aut adipisci veniam commodi soluta quis excepturi, voluptate velit quam itaque alias corporis pariatur quia quisquam saepe dolor, et vero sequi beatae perferendis eveniet sunt est architecto! Pariatur delectus eveniet obcaecati, itaque aliquid aspernatur, voluptatibus accusantium reprehenderit quisquam quia cumque commodi necessitatibus tempore placeat voluptatem officiis ullam ad perferendis et? Totam quo distinctio similique in iure? Excepturi pariatur asperiores cupiditate ex reprehenderit tenetur voluptatem sint, exercitationem doloremque aliquid explicabo dolorum odio saepe sed ab necessitatibus iure sunt cum quam. Molestias, fugiat aperiam! Ex aspernatur dignissimos vero accusantium quisquam excepturi ab perspiciatis autem veritatis, tenetur quae officia qui repudiandae at nostrum ipsum porro amet? Amet perferendis, dolor ducimus optio consequatur veritatis dignissimos nihil.</h1>
-   </> 
-  )
-}
+  const googleLogin = async () => {
+    try {
+      const response = await signInWithPopup(auth, provider);
+      console.log(response.user.email
+      ); 
+    } catch (error) {
+      console.error("Error during sign-in: ", error);
+    }
+  };
 
-export default App
+  return (
+    <>
+      <h1>Google login</h1>
+      <button  className=' bg-blue-500' onClick={googleLogin}>Login with Google</button>
+    </>
+  );
+};
+
+export default App;
